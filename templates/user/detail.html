@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Job Detail</title>
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="{{ url_for('static', filename='css/detail.css') }}"
+    />
+  </head>
+  <body>
+    <div class="container mt-4">
+      <div class="d-flex justify-content-between align-items-center">
+        <h1 class="text-center flex-grow-1">
+          <a href="{{ url_for('list_jobs') }}" class="text-decoration-none"
+            >Job Opportunities</a
+          >
+        </h1>
+        <div class="dropdown">
+          <img
+            src="{{ url_for('static', filename='img/avatar.png') }}"
+            alt="My"
+            class="rounded-circle"
+            style="width: 40px; height: 40px"
+          />
+          <a
+            class="btn btn-link text-decoration-none dropdown-toggle"
+            href="#"
+            role="button"
+            data-bs-toggle="dropdown"
+            >My</a
+          >
+          <ul class="dropdown-menu">
+            <li><a class="dropdown-item" href="">My Profile</a></li>
+            <li><a class="dropdown-item" href="">My Applications</a></li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="job-listing">
+        <h1 class="title">{{ job.title }}</h1>
+        <p class="department">{{ job.department }}</p>
+        <p class="nums">Nums: {{ job.nums }}</p>
+      </div>
+
+      <div class="row">
+        <div class="col-md-8">
+          <h2>Overview</h2>
+          {% if job.overview %}
+          <p style="white-space: pre-wrap">{{ job.overview }}</p>
+          {% endif %} {% if job.responsibilities %}
+          <h2>Responsibilities</h2>
+          <p style="white-space: pre-wrap">{{ job.responsibilities }}</p>
+          {% endif %} {% if job.basic %}
+          <h2>Basic Qualifications</h2>
+          <p style="white-space: pre-wrap">{{ job.basic }}</p>
+          {% endif %} {% if job.preferred %}
+          <h2>Preferred Qualifications</h2>
+          <p style="white-space: pre-wrap">{{ job.preferred }}</p>
+          {% endif %}
+        </div>
+
+        <div class="col-md-4">
+          <form method="post" enctype="multipart/form-data">
+            <div class="mb-3">
+              <label for="first_name" class="form-label">First Name</label>
+              <input
+                type="text"
+                class="form-control"
+                id="first_name"
+                name="first_name"
+                required
+              />
+            </div>
+            <div class="mb-3">
+              <label for="last_name" class="form-label">Last Name</label>
+              <input
+                type="text"
+                class="form-control"
+                id="last_name"
+                name="last_name"
+                required
+              />
+            </div>
+            <div class="mb-3">
+              <label for="email" class="form-label">Email</label>
+              <input
+                type="email"
+                class="form-control"
+                id="email"
+                name="email"
+                required
+              />
+            </div>
+            <div class="mb-3">
+              <label for="resume" class="form-label">Resume/CV</label>
+              <input
+                type="file"
+                class="form-control"
+                id="resume"
+                name="resume"
+                required
+              />
+            </div>
+            <div class="mb-3">
+              <label for="cover_letter" class="form-label">Cover Letter</label>
+              <input
+                type="file"
+                class="form-control"
+                id="cover_letter"
+                name="cover_letter"
+                required
+              />
+            </div>
+            <div class="mb-3">
+              <label for="linkedin_profile" class="form-label"
+                >LinkedIn Profile</label
+              >
+              <input
+                type="url"
+                class="form-control"
+                id="linkedin_profile"
+                name="linkedin_profile"
+              />
+            </div>
+            <div class="mb-3">
+              <label>Authorized to Work</label>
+              <select class="form-select" name="authorized_to_work" required>
+                <option value="yes">Yes</option>
+                <option value="no">No</option>
+              </select>
+            </div>
+            <div class="mb-3">
+              <label>Require Visa Sponsorship</label>
+              <select
+                class="form-select"
+                name="require_visa_sponsorship"
+                required
+              >
+                <option value="yes">Yes</option>
+                <option value="no">No</option>
+              </select>
+            </div>
+            <div class="mb-3">
+              <label>Current Residence</label>
+              <select class="form-select" name="current_residence" required>
+                <option value="yes">Yes</option>
+                <option value="no">No</option>
+              </select>
+            </div>
+            <div class="mb-3">
+              <label for="city_state" class="form-label">City and State</label>
+              <input
+                type="text"
+                class="form-control"
+                id="city_state"
+                name="city_state"
+                required
+              />
+            </div>
+            <button type="submit" class="btn btn-primary">Apply Now</button>
+          </form>
+        </div>
+      </div>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+  </body>
+</html>

@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Profile</title>
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="{{ url_for('static', filename='css/profile.css') }}"
+    />
+  </head>
+  <body>
+    <div class="container mt-4">
+      <div class="d-flex justify-content-between align-items-center">
+        <h1 class="text-center flex-grow-1">
+          <a
+            href="{{ url_for('job_detail2', job_id=job._id) }}"
+            class="text-decoration-none"
+            >Job Management</a
+          >
+        </h1>
+      </div>
+      <div class="job-listing text-center">
+        <h1 class="title">{{ job.title }}</h1>
+        <p class="department">{{ job.department }}</p>
+        <p class="nums">Nums: {{ job.nums }}</p>
+      </div>
+      <div class="d-flex justify-content-center">
+        <div class="row mt-12">
+          <div class="col-12">
+            <h3 class="text-center">Applicant Information</h3>
+            <div class="card p-4">
+              <p><strong>First Name:</strong> {{ application.first_name }}</p>
+              <p><strong>Last Name:</strong> {{ application.last_name }}</p>
+              <p>
+                <strong>Email:</strong>
+                <a href="mailto:{{ application.email }}"
+                  >{{ application.email }}</a
+                >
+              </p>
+              <p>
+                <strong>LinkedIn Profile:</strong>
+                <a href="{{ application.linkedin_profile }}" target="_blank"
+                  >{{ application.linkedin_profile }}</a
+                >
+              </p>
+              <p>
+                <strong>Authorized to Work:</strong> {{
+                application.authorized_to_work }}
+              </p>
+              <p>
+                <strong>Require Visa Sponsorship:</strong> {{
+                application.require_visa_sponsorship }}
+              </p>
+              <p>
+                <strong>Current Residence:</strong> {{
+                application.current_residence }}
+              </p>
+              <p>
+                <strong>City and State:</strong> {{ application.city_state }}
+              </p>
+              <p>
+                <strong>Resume:</strong>
+                <a href="{{ application.resume }}" target="_blank" download
+                  >Download Resume</a
+                >
+              </p>
+              <p>
+                <strong>Cover Letter:</strong>
+                <a
+                  href="{{ application.cover_letter }}"
+                  target="_blank"
+                  download
+                  >Download Cover Letter</a
+                >
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="row mt-4 text-center">
+        <div class="col-12">
+          <form method="POST">
+            <button
+              type="submit"
+              name="action"
+              value="accept"
+              class="btn btn-success me-3"
+            >
+              Accept
+            </button>
+            <button
+              type="submit"
+              name="action"
+              value="reject"
+              class="btn btn-danger"
+            >
+              Reject
+            </button>
+          </form>
+        </div>
+      </div>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+  </body>
+</html>
